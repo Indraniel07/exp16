@@ -1,131 +1,65 @@
-NLP Techniques on Text Data in Python
-Indraniel Wandkar
-PRN: - 25070123156
+# Experiment 16– NLP Techniques on Text Data in Python
 
-#1. Tokenization
+*Indraniel Wandkar*
+*PRN:* 25070123156
 
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('punkt_tab')
+---
 
+## Aim
 
-     
-[nltk_data] Downloading package punkt to /root/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt.zip.
-[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Unzipping corpora/stopwords.zip.
-[nltk_data] Downloading package wordnet to /root/nltk_data...
-[nltk_data] Downloading package punkt_tab to /root/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
-True
+To study and implement various Natural Language Processing (NLP) techniques in Python using the NLTK library, including tokenization, stop word removal, stemming, lemmatization, part-of-speech tagging, and word frequency analysis.
 
-# Word Tokenization
+---
 
-from nltk.tokenize import word_tokenize
+## Theory
 
-text = "Natural Language processing is interesting"
+Natural Language Processing (NLP) is a field of artificial intelligence that focuses on enabling computers to understand, interpret, and process human language. It plays a crucial role in applications such as text analysis, chatbots, sentiment analysis, and machine translation.
 
-tokens = word_tokenize(text)
+The NLTK (Natural Language Toolkit) is a popular Python library used for working with human language data. It provides easy-to-use interfaces for various NLP tasks.
 
-print(tokens)
-     
-['Natural', 'Language', 'processing', 'is', 'interesting']
+The following techniques were implemented in this experiment:
 
-# Sentence Tokenization
+### 1. Tokenization
 
-from nltk.tokenize import sent_tokenize
+Tokenization is the process of breaking text into smaller units such as words or sentences.
 
-text = "Python is easy. It is widely used in data science."
+* *Word Tokenization* splits text into individual words.
+* *Sentence Tokenization* splits text into sentences.
 
-sentences = sent_tokenize(text)
+### 2. Stop Word Removal
 
-print(sentences)
-     
-['Python is easy.', 'It is widely used in data science.']
+Stop words are commonly used words such as is, the, and, in, which do not carry significant meaning. Removing them helps in focusing on important words.
 
-from nltk.draw.util import Text
-#Stop Word Removal
-# Stop word such as is, the ,and, in are removed
+### 3. Stemming
 
-from nltk.corpus import stopwords
-stop_words = set(stopwords.words('english'))
+Stemming reduces words to their root or base form by removing suffixes.
+Example:
 
-words = word_tokenize (text)
+* playing → play
+* studies → studi
 
-filtered_words = [w for w in words if w.lower() not in stop_words]
+### 4. Lemmatization
 
+Lemmatization converts words to their meaningful base (dictionary) form. It considers the context and produces valid words.
+Example:
 
-print(filtered_words)
-     
-['Python', 'easy', '.', 'widely', 'used', 'data', 'science', '.']
+* studies → study
+* running → running
 
-# stemming
-# Stemming reduces words to their root fro,
+### 5. Part-of-Speech (POS) Tagging
 
-from nltk.stem import PorterStemmer
+POS tagging assigns grammatical labels to words such as noun, verb, adjective, etc.
+Example:
 
-stemmer = PorterStemmer()
+* Python → Proper Noun (NNP)
+* is → Verb (VBZ)
 
-words = ["Playing", "Studies", "running", "gone","watched", "coding"]
+### 6. Word Frequency Count
 
-for w in words:
-  print(stemmer.stem(w))
-     
-play
-studi
-run
-gone
-watch
-code
+This technique counts how often each word appears in a text. It helps identify the most common words and patterns in the data.
 
-#Lemmatization
-#Lemmatization convert words to their dictionary form.
-from nltk.stem import WordNetLemmatizer
-Lemmatizer = WordNetLemmatizer()
-print(Lemmatizer.lemmatize("writing"))
-print(Lemmatizer.lemmatize("studies"))
-print(Lemmatizer.lemmatize("best"))
-print(Lemmatizer.lemmatize("running"))
-print(Lemmatizer.lemmatize("coding"))
+---
 
+## Conclusion
 
-     
-writing
-study
-best
-running
-coding
-
-#Part-of-speech (POS) Tagging
-# POS tagging identifies grammatical roles of words
-import nltk
-nltk.download('averaged_perceptron_tagger')
-nltk.download('averaged_perceptron_tagger_eng')
-     
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /root/nltk_data...
-[nltk_data]   Unzipping taggers/averaged_perceptron_tagger.zip.
-[nltk_data] Downloading package averaged_perceptron_tagger_eng to
-[nltk_data]     /root/nltk_data...
-[nltk_data]   Unzipping taggers/averaged_perceptron_tagger_eng.zip.
-True
-
-from nltk import pos_tag
-
-words = word_tokenize("Python is a powerful programming language")
-pos_tag1 = pos_tag(words)
-print(pos_tag1)
-     
-[('Python', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('powerful', 'JJ'), ('programming', 'NN'), ('language', 'NN')]
-
-
-#Word Frequency count
-from nltk.probability import FreqDist
-
-words = word_tokenize(text)
-fd = FreqDist(words)
-print(fd.most_common())
-     
-[('is', 2), ('.', 2), ('Python', 1), ('easy', 1), ('It', 1), ('widely', 1), ('used', 1), ('in', 1), ('data', 1), ('science', 1)]
+Thus, the implementation of various NLP techniques using Python and the NLTK library was successfully performed. The experiment demonstrated how to preprocess text data through tokenization, remove unnecessary words, reduce words to their base forms using stemming and lemmatization, identify grammatical roles using POS tagging, and analyze word frequency. These techniques are fundamental in building efficient NLP and text analysis applications.
